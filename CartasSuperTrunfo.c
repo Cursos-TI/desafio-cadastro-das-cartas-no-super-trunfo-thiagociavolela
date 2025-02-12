@@ -1,55 +1,67 @@
 #include <stdio.h>
 
 int main() {
-    // Definição das variáveis para cada atributo da cidade
+    // Declaração das variáveis
     char codigo[4];
     char nome[50];
     int populacao;
     float area;
     float pib;
     int pontos_turisticos;
+    float densidade_populacional;
+    float pib_per_capita;
 
-    // Cadastro das Cartas
     printf("=======================\n");
-    printf("CADASTRO DE CIDADES\n");
+    printf("CADASTRO DE CIDADE\n");
     printf("=======================\n");
 
-    // Solicita e captura o código da cidade
-    printf("Digite o código da cidade: \n");
-    scanf("%s", codigo);  
+    // Entrada de dados
+    printf("Digite o código da cidade: ");
+    scanf("%s", codigo);
 
-    // Solicita e captura o nome da cidade
-    printf("Digite o nome da cidade: \n");
+    printf("Digite o nome da cidade: ");
+    scanf(" %[^\n]", nome);
     /*Se colocar o nome com espaçamento ex: São paulo
     acontece um erro e o programa não é executado corretamente
     pesquisando encontrei uma solução*/
     //scanf("%s", nome);
-    scanf(" %[^\n]", nome);    
 
-    // Solicita e captura a população da cidade
-    printf("Digite a população da cidade: \n");
+    printf("Digite a população da cidade: ");
     scanf("%d", &populacao);
 
-    // Solicita e captura a área da cidade
-    printf("Digite a área da cidade (em km): \n");
+    printf("Digite a área da cidade (em km²): ");
     scanf("%f", &area);
 
-    // Solicita e captura o PIB da cidade
-    printf("Digite o PIB da cidade (em bilhões): \n");
+    printf("Digite o PIB da cidade (em bilhões): ");
     scanf("%f", &pib);
 
-    // Solicita e captura o número de pontos turísticos da cidade
-    printf("Digite o número de pontos turísticos da cidade: \n");
+    printf("Digite o número de pontos turísticos da cidade: ");
     scanf("%d", &pontos_turisticos);
 
-    // Exibição dos Dados das Cartas
+    // Cálculo das novas propriedades
+    if (area > 0) {
+        densidade_populacional = populacao / area;
+    } else {
+        densidade_populacional = 0; // Evita divisão por zero
+    }
+
+    if (populacao > 0) {
+        pib_per_capita = (pib * 1000000000) / populacao; // PIB convertido para reais
+    } else {
+        pib_per_capita = 0; // Evita divisão por zero
+    }
+
+    // Exibição dos Dados da Cidade Cadastrada
     printf("\nDados da Cidade Cadastrada:\n");
     printf("Código: %s\n", codigo);
     printf("Nome: %s\n", nome);
     printf("População: %d habitantes\n", populacao);
-    printf("Área: %2.f km\n", area);
-    printf("PIB: %2.f bilhões\n", pib);
+    printf("Área: %.2f km²\n", area);
+    printf("PIB: %.2f bilhões\n", pib);
     printf("Pontos Turísticos: %d\n", pontos_turisticos);
+    printf("Densidade Populacional: %.2f habitantes/km²\n", densidade_populacional);
+    printf("PIB per Capita: R$ %.2f\n", pib_per_capita);
+    printf("============================\n");
 
     return 0;
 }
