@@ -1,11 +1,10 @@
 #include <stdio.h>
 
 int main() {
-    
     // Declaração das variáveis para as duas cartas
     char codigo1[4], codigo2[4];
     char nome1[50], nome2[50];
-    int populacao1, populacao2;
+    int populacao1, populacao2; // Usando int para a população
     float area1, area2;
     float pib1, pib2;
     int pontos_turisticos1, pontos_turisticos2;
