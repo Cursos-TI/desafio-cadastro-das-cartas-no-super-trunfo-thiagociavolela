@@ -39,17 +39,8 @@ int main() {
     scanf("%d", &pontos_turisticos);
 
     // Cálculo das novas propriedades
-    if (area > 0) {
-        densidade_populacional = populacao / area;
-    } else {
-        densidade_populacional = 0; // Evita divisão por zero
-    }
-
-    if (populacao > 0) {
-        pib_per_capita = (pib * 1000000000) / populacao; // PIB convertido para reais
-    } else {
-        pib_per_capita = 0; // Evita divisão por zero
-    }
+    densidade_populacional = (populacao / area) * (area > 0);
+    pib_per_capita = ((pib * 1000000000) / populacao) * (populacao > 0);
 
     // Exibição dos Dados da Cidade Cadastrada
     printf("\nDados da Cidade Cadastrada:\n");
